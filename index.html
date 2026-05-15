@@ -29,6 +29,27 @@
       </button>
 
       <h2 id="code"></h2>
+      <hr style="margin-top:20px;margin-bottom:20px;">
+
+<div id="chat"
+style="
+height:200px;
+overflow:auto;
+background:#0f172a;
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+text-align:left;
+"></div>
+
+<input
+type="text"
+id="message"
+placeholder="Type message">
+
+<button onclick="sendMessage()">
+Send
+</button>
 
     </div>
 
@@ -37,4 +58,5 @@
   <script src="script.js"></script>
 
 </body>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 </html>

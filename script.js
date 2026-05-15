@@ -1,6 +1,9 @@
+const socket = io("http://localhost:3000");
+
 let profilePic = "";
 
-document.getElementById("pic").addEventListener("change", function(e){
+document.getElementById("pic")
+.addEventListener("change", function(e){
 
   const file = e.target.files[0];
 
@@ -10,7 +13,8 @@ document.getElementById("pic").addEventListener("change", function(e){
 
     profilePic = reader.result;
 
-    const preview = document.getElementById("preview");
+    const preview =
+      document.getElementById("preview");
 
     preview.src = profilePic;
 
@@ -23,16 +27,11 @@ document.getElementById("pic").addEventListener("change", function(e){
 
 function createAccount(){
 
-  const name = document.getElementById("name").value;
+  const name =
+    document.getElementById("name").value;
 
-  if(name === ""){
-
-    alert("Enter your name");
-
-    return;
-  }
-
-  const code = Math.floor(100000 + Math.random() * 900000);
+  const code =
+    Math.floor(100000 + Math.random() * 900000);
 
   const user = {
     name:name,
@@ -40,8 +39,34 @@ function createAccount(){
     profilePic:profilePic
   };
 
-  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem(
+    "user",
+    JSON.stringify(user)
+  );
 
-  document.getElementById("code").innerHTML =
-    "Your Code: " + code;
+  document.getElementById("code")
+  .innerHTML =
+  "Your Code: " + code;
 }
+
+function sendMessage(){
+
+  const input =
+    document.getElementById("message");
+
+  const message = input.value;
+
+  socket.emit("send_message", message);
+
+  input.value = "";
+}
+
+socket.on("receive_message", (message) => {
+
+  const chat =
+    document.getElementById("chat");
+
+  chat.innerHTML +=
+    "<p>" + message + "</p>";
+
+});

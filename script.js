@@ -169,14 +169,37 @@ function sendMessage(){
 
 socket.on("receive_message", (message) => {
 
+  const user =
+  JSON.parse(localStorage.getItem("user"));
+
   const chat =
   document.getElementById("chatBox");
+
+  const time =
+  new Date().toLocaleTimeString([],{
+    hour:"2-digit",
+    minute:"2-digit"
+  });
 
   chat.innerHTML +=
   `
   <div class="message">
+
+    <strong>
+      ${user ? user.name : "Unknown"}
+    </strong>
+
+    <br>
+
     ${message}
+
+    <br><br>
+
+    <small>${time}</small>
+
   </div>
   `;
+
+  chat.scrollTop = chat.scrollHeight;
 
 });

@@ -12,35 +12,64 @@
 
 <body>
 
-  <div class="container">
+<h1>ZtyleTalk</h1>
 
-    <div class="card">
+<input
+type="text"
+id="name"
+placeholder="Your Name">
 
-      <h1>ZtyleTalk</h1>
+<br><br>
 
-      <input type="text" id="name" placeholder="Enter your name">
+<input
+type="file"
+id="pic">
 
-      <input type="file" id="pic">
+<br><br>
 
-      <img id="preview">
+<img
+id="preview"
+width="80"
+style="display:none;border-radius:50%;">
 
-      <button onclick="createAccount()">
-        Create Account
-      </button>
+<br><br>
 
-      <h2 id="code"></h2>
-      <hr style="margin-top:20px;margin-bottom:20px;">
+<button onclick="createAccount()">
+Create Account
+</button>
+
+<h2 id="code"></h2>
+
+<hr>
+
+<h2>Contacts</h2>
+
+<input
+type="number"
+id="contactCode"
+placeholder="Enter 6 Digit Code">
+
+<button onclick="addContact()">
+Add Contact
+</button>
+
+<div id="contactsList"></div>
+
+<hr>
+
+<h2>Chat</h2>
 
 <div id="chat"
 style="
-height:200px;
+height:250px;
 overflow:auto;
-background:#0f172a;
+background:#111827;
 padding:10px;
 border-radius:10px;
 margin-bottom:10px;
-text-align:left;
-"></div>
+">
+
+</div>
 
 <input
 type="text"
@@ -51,11 +80,9 @@ placeholder="Type message">
 Send
 </button>
 
-    </div>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
